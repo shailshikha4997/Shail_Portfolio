@@ -1,0 +1,54 @@
+@use 'abstracts/mixins' as *;
+@use 'abstracts/variables' as *;
+
+.section-title {
+  margin-bottom: 4rem;
+
+  &--center {
+    text-align: center;
+
+    .section-title__line {
+      margin: 1rem auto 0;
+    }
+  }
+
+  &--left {
+    text-align: left;
+
+    .section-title__line {
+      margin: 1rem 0 0;
+    }
+  }
+
+  &__tag {
+    display: inline-block;
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    color: var(--primary);
+    background: rgba(var(--primary-rgb), 0.08);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+
+  &__heading {
+    @include font-size('3xl');
+    @include heading-style;
+
+    span {
+      @include gradient-text;
+    }
+  }
+
+  &__subtitle {
+    @include font-size('md');
+    color: var(--text-secondary);
+    // max-width: 600px;
+    margin: 0.5rem auto 0;
+    line-height: 1.6;
+  }
+
+  &__line {
+    @include line-decoration;
+  }
+}

@@ -1,0 +1,8 @@
+<div class="section-title" [class]="'section-title--' + align">
+  <span class="section-title__tag">&lt;{{ title }} /&gt;</span>
+  <h2 class="section-title__heading">{{ title }}</h2>
+  @if (subtitle) {
+    <p class="section-title__subtitle">{{ subtitle }}</p>
+  }
+  <div class="section-title__line"></div>
+</div>

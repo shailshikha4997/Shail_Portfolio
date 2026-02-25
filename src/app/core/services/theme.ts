@@ -1,0 +1,29 @@
+import { Injectable, signal, effect } from '@angular/core';
+
+export type Theme = 'dark' | 'light';
+@Injectable({
+  providedIn: 'root',
+})
+export class ThemeService  {
+  readonly theme = signal<Theme>(this.getStoredTheme());
+
+  constructor() {
+    effect(() => {
+      const current = this.theme();
+      document.documentElement.setAttribute('data-theme', current);
+      localStorage.setItem('portfolio-theme', current);
+    });
+  }
+
+  toggle(): void {
+    this.theme.update(t => (t === 'dark' ? 'light' : 'dark'));
+  }
+
+  private getStoredTheme(): Theme {
+    const stored = localStorage.getItem('portfolio-theme') as Theme;
+    if (stored) return stored;
+    return window.matchMedia('(prefers-color-scheme: light)').matches
+      ? 'light'
+      : 'dark';
+  }
+}

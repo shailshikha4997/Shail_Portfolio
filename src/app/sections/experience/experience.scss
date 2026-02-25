@@ -1,0 +1,190 @@
+@use 'abstracts/mixins' as *;
+@use 'abstracts/variables' as *;
+
+.experience {
+  background: var(--bg-secondary);
+
+  // ─── Timeline ─────────────────────
+  &__timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  &__line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      var(--primary),
+      rgba(var(--primary-rgb), 0.2),
+      transparent
+    );
+
+    @include respond-below('md') {
+      left: 20px;
+    }
+  }
+
+  // ─── Item ─────────────────────────
+  &__item {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: calc(50% + 40px);
+    margin-bottom: 3rem;
+
+    &--right {
+      justify-content: flex-end;
+      padding-left: 0;
+      padding-right: calc(50% + 40px);
+
+      .experience__dot {
+        left: auto;
+        right: auto;
+        left: calc(50% - 12px);
+      }
+
+      @include respond-below('md') {
+        padding-right: 0;
+        padding-left: 60px;
+      }
+    }
+
+    @include respond-below('md') {
+      padding-left: 60px;
+      padding-right: 0;
+    }
+  }
+
+  // ─── Dot ──────────────────────────
+  &__dot {
+    position: absolute;
+    left: calc(50% - 12px);
+    top: 30px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 3px solid var(--primary);
+    z-index: 2;
+    @include flex-center;
+
+    @include respond-below('md') {
+      left: 9px;
+    }
+
+    &--active {
+      border-color: var(--accent);
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    &-inner {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+
+      .experience__dot--active & {
+        background: var(--accent);
+      }
+    }
+  }
+
+  // ─── Card ─────────────────────────
+  &__card {
+    @include card-base;
+    width: 100%;
+  }
+
+  &__card-header {
+    @include flex-between;
+    margin-bottom: 0.75rem;
+  }
+
+  &__date {
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    i { color: var(--primary); }
+  }
+
+  &__current-badge {
+    display: inline-block;
+    padding: 0.2rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    background: rgba(var(--accent-rgb), 0.1);
+    border-radius: 20px;
+    margin-left: 0.75rem;
+  }
+
+  &__role {
+    @include font-size('lg');
+    margin-bottom: 0.25rem;
+  }
+
+  &__company {
+    font-size: 0.95rem;
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  &__description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  &__achievements {
+    margin-bottom: 1.25rem;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+
+      i {
+        color: var(--accent);
+        margin-top: 0.25rem;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  &__tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__tech-tag {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--primary);
+    background: rgba(var(--primary-rgb), 0.08);
+    border-radius: 6px;
+    border: 1px solid rgba(var(--primary-rgb), 0.15);
+  }
+}

@@ -1,0 +1,65 @@
+<section id="experience" class="section experience">
+  <div class="container">
+    <app-section-title
+      title="Work Experience & Education"
+      subtitle="A glimpse into my professional background and academic achievements">
+    </app-section-title>
+
+    <div class="experience__timeline">
+      @for (exp of data.experiences(); track exp.id; let i = $index) {
+        <div
+          class="experience__item"
+          [class.experience__item--right]="i % 2 !== 0"
+          appScrollAnimate
+          [animationClass]="i % 2 === 0 ? 'animate-fade-right' : 'animate-fade-left'">
+
+          <!-- Timeline dot -->
+          <div class="experience__dot" [class.experience__dot--active]="exp.current">
+            <div class="experience__dot-inner"></div>
+          </div>
+
+          <!-- Card -->
+          <div class="experience__card">
+            <div class="experience__card-header">
+              <div>
+                <span class="experience__date">
+                  <i class="far fa-calendar-alt"></i>
+                  {{ exp.startDate }} — {{ exp.current ? 'Present' : exp.endDate }}
+                </span>
+                @if (exp.current) {
+                  <span class="experience__current-badge">Current</span>
+                }
+              </div>
+            </div>
+
+            <h3 class="experience__role">{{ exp.role }}</h3>
+            <h4 class="experience__company">
+              <i class="far fa-building"></i>
+              {{ exp.company }} · {{ exp.location }}
+            </h4>
+
+            <p class="experience__description">{{ exp.description }}</p>
+
+            <ul class="experience__achievements">
+              @for (achievement of exp.achievements; track $index) {
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  {{ achievement }}
+                </li>
+              }
+            </ul>
+
+            <div class="experience__tech-stack">
+              @for (tech of exp.technologies; track tech) {
+                <span class="experience__tech-tag">{{ tech }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Timeline Line -->
+      <div class="experience__line"></div>
+    </div>
+  </div>
+</section>

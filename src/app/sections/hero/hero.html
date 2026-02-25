@@ -1,0 +1,103 @@
+<section id="hero" class="hero">
+  <!-- Background decoration -->
+  <div class="hero__bg">
+    <div class="hero__orb hero__orb--1"></div>
+    <div class="hero__orb hero__orb--2"></div>
+    <div class="hero__grid-pattern"></div>
+  </div>
+
+  <div class="hero__container container">
+    <div class="hero__content">
+      <!-- Greeting -->
+      <div class="hero__greeting animate-fade-up">
+        <span class="hero__wave">👋</span>
+        <span>Hello, I'm</span>
+      </div>
+
+      <!-- Name -->
+      <h1 class="hero__name animate-fade-up delay-1">
+        {{ data.personalInfo().name }}
+      </h1>
+
+      <!-- Typed Role -->
+      <div class="hero__role animate-fade-up delay-2">
+        <span class="hero__role-static">I'm a </span>
+        <span class="hero__role-typed text-gradient">{{ typedText }}</span>
+        <span class="hero__cursor">|</span>
+      </div>
+
+      <!-- Tagline -->
+      <p class="hero__tagline animate-fade-up delay-3">
+        {{ data.personalInfo().tagline }}
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero__actions animate-fade-up delay-4">
+        <a class="btn-primary" (click)="scroll.scrollTo('projects')">
+          <i class="fas fa-rocket"></i>
+          View My Work
+        </a>
+        <a class="btn-outline" [href]="data.personalInfo().resumeUrl" target="_blank">
+          <i class="fas fa-download"></i>
+          Show CV
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero__stats animate-fade-up delay-5">
+        <div class="hero__stat">
+          <span class="hero__stat-number">{{ data.personalInfo().yearsOfExperience }}+</span>
+          <span class="hero__stat-label">Years Experience</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-number">{{ data.personalInfo().projectsCompleted }}+</span>
+          <span class="hero__stat-label">Projects Completed</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-number">15+</span>
+          <span class="hero__stat-label">Happy Clients</span>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <div class="hero__social animate-fade-up delay-6">
+        @for (link of data.personalInfo().socialLinks; track link.name) {
+          <a [href]="link.url" target="_blank" class="hero__social-link" [attr.aria-label]="link.name">
+            <i [class]="link.icon"></i>
+          </a>
+        }
+      </div>
+    </div>
+
+    <!-- Right side: Avatar / Code block -->
+    <div class="hero__visual animate-fade-left delay-3">
+      <div class="hero__avatar-wrapper">
+        <div class="hero__avatar-morph">
+          <img [src]="data.personalInfo().avatar" [alt]="data.personalInfo().name" />
+        </div>
+        <div class="hero__avatar-ring"></div>
+      </div>
+
+      <!-- Floating badges -->
+      <div class="hero__badge hero__badge--angular animate-float">
+        <i class="fab fa-angular"></i> Angular
+      </div>
+      <div class="hero__badge hero__badge--ts animate-float delay-2">
+        <i class="fas fa-code"></i> TypeScript
+      </div>
+      <div class="hero__badge hero__badge--rxjs animate-float delay-4">
+        <i class="fas fa-stream"></i> RxJS
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll-indicator" (click)="scroll.scrollTo('about')">
+    <div class="hero__scroll-mouse">
+      <div class="hero__scroll-wheel"></div>
+    </div>
+    <span>Scroll Down</span>
+  </div>
+</section>

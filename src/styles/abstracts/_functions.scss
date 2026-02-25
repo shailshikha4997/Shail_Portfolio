@@ -1,0 +1,14 @@
+@use 'sass:map';       // ✅ Add this
+@use 'abstracts/variables' as *;
+
+@function spacer($key) {
+  @return map.get($spacers, $key);         // ✅ was map-get()
+}
+
+@function font-size($key) {
+  @return map.get($font-sizes, $key);      // ✅ was map-get()
+}
+
+@function breakpoint($key) {
+  @return map.get($breakpoints, $key);     // ✅ was map-get()
+}

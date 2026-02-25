@@ -1,0 +1,128 @@
+@use 'abstracts/mixins' as *;
+@use 'abstracts/variables' as *;
+
+.testimonials {
+  background: var(--bg-secondary);
+
+  &__carousel {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  &__quote-icon {
+    @include flex-center;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary);
+    font-size: 1.5rem;
+  }
+
+  &__text {
+    @include font-size('lg');
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  &__rating {
+    margin-bottom: 1.5rem;
+
+    .fa-star {
+      color: var(--border-color);
+      font-size: 1rem;
+      margin: 0 2px;
+
+      &.filled {
+        color: #fbbf24;
+      }
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  &__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: left;
+  }
+
+  &__role {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: left;
+  }
+
+  // ─── Navigation ───────────────────
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  &__nav-btn {
+    @include flex-center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    background: var(--bg-card);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(var(--primary-rgb), 0.08);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border-color);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+
+    &.active {
+      width: 30px;
+      border-radius: 5px;
+      background: var(--gradient-primary);
+    }
+  }
+}

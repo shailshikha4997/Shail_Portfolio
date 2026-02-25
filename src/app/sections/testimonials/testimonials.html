@@ -1,0 +1,60 @@
+<section id="testimonials" class="section testimonials">
+  <div class="container">
+    <app-section-title
+      title="Testimonials"
+      subtitle="What colleagues and clients say about working with me">
+    </app-section-title>
+
+    <div class="testimonials__carousel" appScrollAnimate>
+      <!-- Quote Icon -->
+      <div class="testimonials__quote-icon">
+        <i class="fas fa-quote-left"></i>
+      </div>
+
+      <!-- Content -->
+      <div class="testimonials__content">
+        <p class="testimonials__text">{{ current.content }}</p>
+
+        <div class="testimonials__rating">
+          @for (_ of [1,2,3,4,5]; track $index) {
+            <i
+              class="fas fa-star"
+              [class.filled]="$index < current.rating">
+            </i>
+          }
+        </div>
+
+        <div class="testimonials__author">
+          <div class="testimonials__avatar">
+            <img [src]="data.personalInfo().avatar" [alt]="current.name" />
+          </div>
+          <div>
+            <h4 class="testimonials__name">{{ current.name }}</h4>
+            <p class="testimonials__role">{{ current.role }} at {{ current.company }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="testimonials__nav">
+        <button class="testimonials__nav-btn" (click)="prev()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <div class="testimonials__dots">
+          @for (t of data.testimonials(); track t.id; let i = $index) {
+            <button
+              class="testimonials__dot"
+              [class.active]="activeIndex() === i"
+              (click)="goTo(i)">
+            </button>
+          }
+        </div>
+
+        <button class="testimonials__nav-btn" (click)="next()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

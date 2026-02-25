@@ -1,0 +1,187 @@
+@use 'abstracts/mixins' as *;
+@use 'abstracts/variables' as *;
+
+.about {
+  background: var(--bg-secondary);
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 5rem;
+
+    @include respond-below('lg') {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  // ─── Image Column ─────────────────
+  &__image-col {
+    @include flex-center;
+  }
+
+  &__image-wrapper {
+    position: relative;
+  }
+
+  &__image-frame {
+    width: 350px;
+    height: 420px;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    border: 3px solid rgba(var(--primary-rgb), 0.2);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 60%,
+        rgba(var(--primary-rgb), 0.1)
+      );
+    }
+
+    img {
+      width: 100%;
+      height: 150%;
+      object-fit: cover;
+    }
+
+    @include respond-below('md') {
+      width: 280px;
+      height: 340px;
+    }
+  }
+
+  &__experience-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    @include flex-center;
+    flex-direction: column;
+    width: 120px;
+    height: 120px;
+    background: var(--gradient-primary);
+    border-radius: 20px;
+    color: #fff;
+    box-shadow: var(--shadow-lg);
+
+    @include respond-below('md') {
+      width: 100px;
+      height: 100px;
+      bottom: -15px;
+      right: -15px;
+    }
+  }
+
+  &__experience-number {
+    font-family: $font-heading;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  &__experience-text {
+    font-size: 0.7rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+  }
+
+  // ─── Content Column ───────────────
+  &__subtitle {
+    @include font-size('2xl');
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  &__bio {
+    @include body-text;
+    margin-bottom: 2rem;
+  }
+
+  &__info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    @include respond-below('sm') {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__info-item {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__info-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 80px;
+  }
+
+  &__info-value {
+    color: var(--text-secondary);
+
+    &--available {
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  // ─── Highlight Cards ──────────────
+  &__highlights {
+    @include responsive-grid(250px, 1.5rem);
+  }
+
+  &__highlight-card {
+    @include card-base;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+  }
+
+  &__highlight-icon {
+    @include flex-center;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.25rem;
+    border-radius: 16px;
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary);
+    font-size: 1.5rem;
+    transition: all var(--transition-base);
+
+    .about__highlight-card:hover & {
+      background: var(--gradient-primary);
+      color: #fff;
+      transform: scale(1.1);
+    }
+  }
+
+  &__highlight-card h4 {
+    @include font-size('md');
+    margin-bottom: 0.75rem;
+  }
+
+  &__highlight-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+}

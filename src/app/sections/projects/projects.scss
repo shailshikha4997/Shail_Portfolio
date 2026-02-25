@@ -1,0 +1,147 @@
+@use 'abstracts/mixins' as *;
+@use 'abstracts/variables' as *;
+
+.projects {
+  &__grid {
+    @include responsive-grid(350px, 1.5rem);
+
+    @include respond-below('md') {
+      @include responsive-grid(280px, 1.25rem);
+    }
+  }
+
+  // ─── Card ─────────────────────────
+  &__card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+
+    &:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-6px);
+
+      .projects__card-overlay {
+        opacity: 1;
+      }
+
+      .projects__card-image img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  // ─── Image ────────────────────────
+  &__card-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+  }
+
+  &__card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    @include flex-center;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  &__card-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  &__action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: var(--primary);
+    color: #fff;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &--outline {
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+
+      &:hover {
+        background: #fff;
+        color: #000;
+      }
+    }
+  }
+
+  &__category-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: rgba(var(--primary-rgb), 0.9);
+    color: #fff;
+    border-radius: 6px;
+    backdrop-filter: blur(10px);
+  }
+
+  // ─── Content ──────────────────────
+  &__card-content {
+    padding: 1.5rem;
+  }
+
+  &__card-title {
+    @include font-size('lg');
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  &__card-description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  &__tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  &__tech-item {
+    padding: 0.25rem 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    font-family: $font-mono;
+    color: var(--accent);
+    background: rgba(var(--accent-rgb), 0.08);
+    border-radius: 4px;
+  }
+
+  // ─── Toggle ───────────────────────
+  &__toggle {
+    @include flex-center;
+    margin-top: 3rem;
+  }
+}

@@ -1,0 +1,117 @@
+<section id="contact" class="section contact">
+  <div class="container">
+    <app-section-title
+      title="Get In Touch"
+      subtitle="Have a project in mind or want to collaborate? Let's talk!">
+    </app-section-title>
+
+    <div class="contact__grid">
+      <!-- Left: Info -->
+      <div class="contact__info" appScrollAnimate animationClass="animate-fade-right">
+        <h3 class="contact__info-title">Let's work together</h3>
+        <p class="contact__info-text">
+          I'm always excited to take on new challenges and collaborate with
+          forward-thinking teams. Whether you need a frontend architect,
+          an Angular expert, or a technical lead — let's connect.
+        </p>
+
+        <div class="contact__info-items">
+          @for (item of contactInfo; track item.label) {
+            <div class="contact__info-item">
+              <div class="contact__info-icon">
+                <i [class]="item.icon"></i>
+              </div>
+              <div>
+                <span class="contact__info-label">{{ item.label }}</span>
+                @if (item.link) {
+                  <a [href]="item.link" class="contact__info-value">{{ item.value }}</a>
+                } @else {
+                  <span class="contact__info-value">{{ item.value }}</span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Social -->
+        <div class="contact__social">
+          @for (link of data.personalInfo().socialLinks; track link.name) {
+            <a [href]="link.url" target="_blank" class="contact__social-link">
+              <i [class]="link.icon"></i>
+            </a>
+          }
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="contact__form-wrapper" appScrollAnimate animationClass="animate-fade-left">
+        @if (submitted()) {
+          <div class="contact__success">
+            <div class="contact__success-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out. I'll get back to you within 24 hours.</p>
+          </div>
+        } @else {
+          <form class="contact__form" (ngSubmit)="onSubmit()">
+            <div class="contact__form-row">
+              <div class="contact__field">
+                <label for="name">Full Name</label>
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Shail Bhardwaj"
+                  [(ngModel)]="formData.name"
+                  name="name"
+                  required />
+              </div>
+              <div class="contact__field">
+                <label for="email">Email Address</label>
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="shail@example.com"
+                  [(ngModel)]="formData.email"
+                  name="email"
+                  required />
+              </div>
+            </div>
+
+            <div class="contact__field">
+              <label for="subject">Subject</label>
+              <input
+                id="subject"
+                type="text"
+                placeholder="Project Discussion"
+                [(ngModel)]="formData.subject"
+                name="subject"
+                required />
+            </div>
+
+            <div class="contact__field">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                rows="5"
+                placeholder="Tell me about your project..."
+                [(ngModel)]="formData.message"
+                name="message"
+                required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary contact__submit" [disabled]="sending()">
+              @if (sending()) {
+                <i class="fas fa-spinner fa-spin"></i>
+                Sending...
+              } @else {
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+              }
+            </button>
+          </form>
+        }
+      </div>
+    </div>
+  </div>
+</section>

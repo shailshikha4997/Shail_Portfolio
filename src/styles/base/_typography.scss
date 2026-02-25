@@ -1,0 +1,38 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Google Fonts Import
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+  @include heading-style;
+  margin-bottom: 0.5em;
+}
+
+h1 { @include font-size('5xl'); }
+h2 { @include font-size('3xl'); }
+h3 { @include font-size('2xl'); }
+h4 { @include font-size('xl'); }
+h5 { @include font-size('lg'); }
+h6 { @include font-size('md'); }
+
+p {
+  @include body-text;
+  margin-bottom: 1rem;
+}
+
+.text-gradient {
+  @include gradient-text;
+}
+
+.text-mono {
+  font-family: $font-mono;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+strong, b {
+  font-weight: 700;
+}

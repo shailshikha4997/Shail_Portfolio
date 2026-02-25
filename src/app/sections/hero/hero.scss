@@ -1,0 +1,338 @@
+@use 'abstracts/mixins' as *;
+@use 'abstracts/variables' as *;
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: var(--nav-height);
+
+  // ─── Background ────────────────────────
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  &__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+
+    &--1 {
+      width: 500px;
+      height: 500px;
+      background: rgba(var(--primary-rgb), 0.12);
+      top: -10%;
+      right: -5%;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    &--2 {
+      width: 400px;
+      height: 400px;
+      background: rgba(var(--accent-rgb), 0.08);
+      bottom: -10%;
+      left: -5%;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+  }
+
+  &__grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(var(--primary-rgb), 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--primary-rgb), 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  // ─── Container Layout ──────────────────
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+
+    @include respond-below('lg') {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 3rem;
+    }
+  }
+
+  // ─── Content ───────────────────────────
+  &__greeting {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: $font-mono;
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+
+    @include respond-below('lg') {
+      justify-content: center;
+    }
+  }
+
+  &__wave {
+    display: inline-block;
+    font-size: 1.5rem;
+    animation: float 2s ease-in-out infinite;
+  }
+
+  &__name {
+    @include font-size('5xl');
+    @include heading-style;
+    line-height: 1.05;
+    margin-bottom: 0.75rem;
+
+    @include respond-below('sm') {
+      @include font-size('3xl');
+    }
+  }
+
+  &__role {
+    @include font-size('xl');
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    min-height: 2.2rem;
+
+    &-typed {
+      font-weight: 700;
+    }
+  }
+
+  &__cursor {
+    font-weight: 300;
+    color: var(--primary);
+    animation: blink-caret 0.75s step-end infinite;
+  }
+
+  &__tagline {
+    @include font-size('md');
+    color: var(--text-secondary);
+    max-width: 550px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+
+    @include respond-below('lg') {
+      margin: 0 auto 2rem;
+    }
+  }
+
+  // ─── Actions ───────────────────────────
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+
+    @include respond-below('lg') {
+      justify-content: center;
+    }
+
+    @include respond-below('sm') {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  // ─── Stats ─────────────────────────────
+  &__stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    @include respond-below('lg') {
+      justify-content: center;
+    }
+
+    @include respond-below('sm') {
+      gap: 1.5rem;
+    }
+  }
+
+  &__stat {
+    @include flex-column;
+
+    &-number {
+      @include font-size('2xl');
+      @include gradient-text;
+      font-family: $font-heading;
+      font-weight: 800;
+    }
+
+    &-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    &-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--border-color);
+    }
+  }
+
+  // ─── Social ────────────────────────────
+  &__social {
+    display: flex;
+    gap: 0.75rem;
+
+    @include respond-below('lg') {
+      justify-content: center;
+    }
+
+    &-link {
+      @include flex-center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      transition: all var(--transition-fast);
+
+      &:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: rgba(var(--primary-rgb), 0.08);
+        transform: translateY(-3px);
+      }
+    }
+  }
+
+  // ─── Visual / Avatar ──────────────────
+  &__visual {
+    position: relative;
+    @include flex-center;
+
+    @include respond-below('lg') {
+      order: -1;
+    }
+  }
+
+  &__avatar-wrapper {
+    position: relative;
+    width: 380px;
+    height: 380px;
+
+    @include respond-below('md') {
+      width: 280px;
+      height: 280px;
+    }
+  }
+
+  &__avatar-morph {
+    width: 100%;
+    height: 100%;
+    animation: morph 8s ease-in-out infinite;
+    overflow: hidden;
+    background: var(--gradient-primary);
+    padding: 6px;
+
+    img {
+      width: 100%;
+      height: 148%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+  }
+
+  &__avatar-ring {
+    position: absolute;
+    inset: -15px;
+    border: 2px dashed rgba(var(--primary-rgb), 0.2);
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+  }
+
+  // ─── Floating Badges ──────────────────
+  &__badge {
+    position: absolute;
+    @include glass-card;
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow-md);
+
+    i {
+      font-size: 1.1rem;
+    }
+
+    &--angular {
+      top: 10%;
+      right: -10%;
+      i { color: #dd0031; }
+    }
+
+    &--ts {
+      bottom: 15%;
+      left: -5%;
+      i { color: #3178c6; }
+    }
+
+    &--rxjs {
+      bottom: 5%;
+      right: 5%;
+      i { color: #e01f8a; }
+    }
+
+    @include respond-below('md') {
+      display: none;
+    }
+  }
+
+  // ─── Scroll Indicator ─────────────────
+  &__scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    @include flex-column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    animation: fadeInUp 1s ease 1.5s forwards;
+    opacity: 0;
+
+    span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+  }
+
+  &__scroll-mouse {
+    width: 24px;
+    height: 38px;
+    border: 2px solid var(--text-muted);
+    border-radius: 12px;
+    @include flex-center;
+    padding-top: 6px;
+  }
+
+  &__scroll-wheel {
+    width: 3px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 2px;
+    animation: float 1.5s ease-in-out infinite;
+  }
+}

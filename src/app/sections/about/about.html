@@ -1,0 +1,72 @@
+<section id="about" class="section about">
+  <div class="container">
+    <app-section-title
+      title="About Me"
+      subtitle="Architecting scalable frontends that power millions of users worldwide">
+    </app-section-title>
+
+    <div class="about__grid">
+      <!-- Left: Image / Visual -->
+      <div class="about__image-col" appScrollAnimate animationClass="animate-fade-right">
+        <div class="about__image-wrapper">
+          <div class="about__image-frame">
+            <img [src]="data.personalInfo().avatar" [alt]="data.personalInfo().name" />
+          </div>
+          <div class="about__experience-badge">
+            <span class="about__experience-number">{{ data.personalInfo().yearsOfExperience }}+</span>
+            <span class="about__experience-text">Years of<br />Experience</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="about__content-col">
+        <div appScrollAnimate animationClass="animate-fade-left">
+          <h3 class="about__subtitle">
+           Turning complex ideas into <span class="text-gradient">powerful</span> web experiences
+          </h3>
+
+          <p class="about__bio">{{ data.personalInfo().bio }}</p>
+
+          <div class="about__info-grid">
+            <div class="about__info-item">
+              <span class="about__info-label">Name:</span>
+              <span class="about__info-value">{{ data.personalInfo().name }}</span>
+            </div>
+            <div class="about__info-item">
+              <span class="about__info-label">Email:</span>
+              <span class="about__info-value">{{ data.personalInfo().email }}</span>
+            </div>
+            <div class="about__info-item">
+              <span class="about__info-label">Location:</span>
+              <span class="about__info-value">{{ data.personalInfo().location }}</span>
+            </div>
+            <div class="about__info-item">
+              <span class="about__info-label">Available:</span>
+              <span class="about__info-value about__info-value--available">
+                <span class="about__dot"></span> Open to opportunities
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Highlights -->
+    <div class="about__highlights">
+      @for (item of highlights; track item.title; let i = $index) {
+        <div
+          class="about__highlight-card"
+          appScrollAnimate
+          animationClass="animate-fade-up"
+          [delay]="(i * 0.15) + 's'">
+          <div class="about__highlight-icon">
+            <i [class]="item.icon"></i>
+          </div>
+          <h4>{{ item.title }}</h4>
+          <p>{{ item.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

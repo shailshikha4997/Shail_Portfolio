@@ -1,0 +1,192 @@
+@use 'abstracts/mixins' as *;
+@use 'abstracts/variables' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: var(--z-fixed);
+  transition: all var(--transition-base);
+
+  &.scrolled {
+    @include glass-card;
+    box-shadow: var(--shadow-md);
+    height: 70px;
+  }
+
+  &__container {
+    @include flex-between;
+    height: 100%;
+  }
+
+  // ─── Logo ────────────────────────────
+  &__logo {
+    font-family: $font-mono;
+    font-size: 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    user-select: none;
+
+    &-bracket {
+      color: var(--primary);
+    }
+    &-name {
+      @include gradient-text;
+    }
+    &-slash {
+      color: var(--accent);
+    }
+  }
+
+  // ─── Nav Links ───────────────────────
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    @include respond-below('lg') {
+      display: none;
+    }
+  }
+
+  &__link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      color: var(--text-primary);
+      background: rgba(var(--primary-rgb), 0.08);
+    }
+
+    &.active {
+      color: var(--primary);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 3px;
+        background: var(--gradient-primary);
+        border-radius: 2px;
+      }
+    }
+  }
+
+  // ─── Actions ─────────────────────────
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__theme-toggle {
+    @include flex-center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(var(--primary-rgb), 0.08);
+    color: var(--primary);
+    font-size: 1.1rem;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: rgba(var(--primary-rgb), 0.15);
+      transform: rotate(15deg);
+    }
+  }
+
+  &__cta {
+    padding: 0.6rem 1.5rem !important;
+    font-size: 0.85rem !important;
+
+    @include respond-below('md') {
+      display: none;
+    }
+  }
+
+  // ─── Mobile Toggle ───────────────────
+  &__mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+
+    @include respond-below('lg') {
+      display: flex;
+    }
+
+    span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all var(--transition-base);
+    }
+
+    &.open {
+      span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+      span:nth-child(2) { opacity: 0; }
+      span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    }
+  }
+
+  // ─── Mobile Menu ─────────────────────
+  &__mobile-menu {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    @include glass-card;
+    transition: height var(--transition-base);
+
+    @include respond-to('lg') {
+      display: none;
+    }
+
+    &.open {
+      height: calc(100vh - var(--nav-height));
+      padding: 2rem;
+    }
+
+    ul {
+      @include flex-column;
+      gap: 0.5rem;
+    }
+
+    a {
+      display: block;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-radius: 12px;
+      transition: all var(--transition-fast);
+
+      &:hover,
+      &.active {
+        color: var(--primary);
+        background: rgba(var(--primary-rgb), 0.08);
+      }
+    }
+  }
+}

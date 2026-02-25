@@ -1,0 +1,42 @@
+@use '../abstracts/mixins' as *;
+
+.container {
+  @include container;
+}
+
+.section {
+  @include section-padding;
+  position: relative;
+}
+
+.btn-primary   { @include button-primary; }
+.btn-outline   { @include button-outline; }
+
+.glass         { @include glass-card; }
+.card          { @include card-base; }
+
+// Visibility
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Text alignment
+.text-center { text-align: center; }
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
+
+// Flex helpers
+.flex-center  { @include flex-center; }
+.flex-between { @include flex-between; }
+.flex-column  { @include flex-column; }
+
+.gap-1 { gap: 0.5rem; }
+.gap-2 { gap: 1rem; }
+.gap-3 { gap: 1.5rem; }
+.gap-4 { gap: 2rem; }

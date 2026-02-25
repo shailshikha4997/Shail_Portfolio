@@ -1,0 +1,72 @@
+<nav class="navbar" [class.scrolled]="scroll.isScrolled()">
+  <div class="navbar__container container">
+
+    <!-- Logo -->
+    <a class="navbar__logo" (click)="navigateTo('hero')">
+      <span class="navbar__logo-bracket">&lt;</span>
+      <span class="navbar__logo-name">Shailshikha</span>
+      <span class="navbar__logo-slash"> /</span>
+      <span class="navbar__logo-bracket">&gt;</span>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <ul class="navbar__links">
+      @for (link of navLinks; track link.id) {
+        <li>
+          <a
+            class="navbar__link"
+            [class.active]="scroll.activeSection() === link.id"
+            (click)="navigateTo(link.id)">
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- Actions -->
+    <div class="navbar__actions">
+      <!-- Theme Toggle -->
+      <button
+        class="navbar__theme-toggle"
+        (click)="theme.toggle()"
+        [attr.aria-label]="'Switch to ' + (theme.theme() === 'dark' ? 'light' : 'dark') + ' theme'">
+        @if (theme.theme() === 'dark') {
+          <i class="fas fa-sun"></i>
+        } @else {
+          <i class="fas fa-moon"></i>
+        }
+      </button>
+
+      <!-- Hire Me CTA -->
+      <a class="navbar__cta btn-primary" (click)="navigateTo('contact')">
+        Hire Me
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button
+        class="navbar__mobile-toggle"
+        [class.open]="mobileOpen"
+        (click)="mobileOpen = !mobileOpen"
+        aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="navbar__mobile-menu" [class.open]="mobileOpen">
+    <ul>
+      @for (link of navLinks; track link.id) {
+        <li>
+          <a
+            [class.active]="scroll.activeSection() === link.id"
+            (click)="navigateTo(link.id)">
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</nav>

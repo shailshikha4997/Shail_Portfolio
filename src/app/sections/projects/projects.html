@@ -1,0 +1,64 @@
+<section id="projects" class="section projects">
+  <div class="container">
+    <app-section-title
+      title="Featured Projects"
+      subtitle="A showcase of applications I've built with passion and precision">
+    </app-section-title>
+
+    <div class="projects__grid">
+      @for (project of displayedProjects; track project.id; let i = $index) {
+        <div
+          class="projects__card"
+          appScrollAnimate
+          animationClass="animate-fade-up"
+          [delay]="(i * 0.1) + 's'">
+
+          <!-- Image -->
+          <div class="projects__card-image">
+            <img [src]="project.image" [alt]="project.title" />
+            <div class="projects__card-overlay">
+              <div class="projects__card-actions">
+                @if (project.liveUrl) {
+                  <a [href]="project.liveUrl" target="_blank" class="projects__action-btn">
+                    <i class="fas fa-external-link-alt"></i>
+                    Live Demo
+                  </a>
+                }
+                @if (project.githubUrl) {
+                  <a [href]="project.githubUrl" target="_blank" class="projects__action-btn projects__action-btn--outline">
+                    <i class="fab fa-github"></i>
+                    Source Code
+                  </a>
+                }
+              </div>
+            </div>
+            <span class="projects__category-badge">{{ project.category }}</span>
+          </div>
+
+          <!-- Content -->
+          <div class="projects__card-content">
+            <h3 class="projects__card-title">{{ project.title }}</h3>
+            <p class="projects__card-description">{{ project.description | truncate: 120 }}</p>
+
+            <div class="projects__tech-list">
+              @for (tech of project.technologies; track tech) {
+                <span class="projects__tech-item">{{ tech }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Toggle Button -->
+    <div class="projects__toggle">
+      <button class="btn-outline" (click)="showAll.set(!showAll())">
+        @if (showAll()) {
+          <i class="fas fa-chevron-up"></i> Show Less
+        } @else {
+          <i class="fas fa-th"></i> View All Projects
+        }
+      </button>
+    </div>
+  </div>
+</section>

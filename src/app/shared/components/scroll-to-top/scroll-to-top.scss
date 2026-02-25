@@ -1,0 +1,23 @@
+@use 'abstracts/mixins' as *;
+
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  @include flex-center;
+  width: 48px;
+  height: 48px;
+  background: var(--gradient-primary);
+  color: #fff;
+  border-radius: 14px;
+  font-size: 1rem;
+  z-index: var(--z-fixed);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  animation: fadeInUp 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(var(--primary-rgb), 0.4);
+  }
+}

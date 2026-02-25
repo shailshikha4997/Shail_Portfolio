@@ -1,0 +1,46 @@
+<section id="skills" class="section skills">
+  <div class="container">
+    <app-section-title
+      title="Skills & Expertise"
+      subtitle="My core tech stack that powers every project from concept to deployment">
+    </app-section-title>
+
+    <!-- Category Filter -->
+    <div class="skills__filters" appScrollAnimate>
+      @for (cat of categories; track cat.key) {
+        <button
+          class="skills__filter-btn"
+          [class.active]="activeCategory() === cat.key"
+          (click)="activeCategory.set(cat.key)">
+          <i [class]="cat.icon"></i>
+          {{ cat.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="skills__grid">
+      @for (skill of filteredSkills; track skill.name; let i = $index) {
+        <div
+          class="skills__card"
+          appScrollAnimate
+          animationClass="animate-scale-in"
+          [delay]="(i * 0.05) + 's'">
+          <div class="skills__card-icon">
+            <i [class]="skill.icon"></i>
+          </div>
+          <div class="skills__card-info">
+            <span class="skills__card-name">{{ skill.name }}</span>
+            <span class="skills__card-level">{{ skill.level }}%</span>
+          </div>
+          <div class="skills__progress-bar">
+            <div
+              class="skills__progress-fill"
+              [style.width.%]="skill.level">
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

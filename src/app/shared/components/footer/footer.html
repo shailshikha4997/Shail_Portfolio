@@ -1,0 +1,40 @@
+<footer class="footer">
+  <div class="footer__container container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="footer__logo" (click)="scroll.scrollTo('hero')">
+          <span>&lt;</span>Shailshikha<span> /&gt;</span>
+        </a>
+        <p class="footer__tagline">
+          Crafting exceptional Angular experiences.<br />
+          Let's build something amazing together.
+        </p>
+      </div>
+
+      <div class="footer__links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a (click)="scroll.scrollTo('about')">About</a></li>
+          <li><a (click)="scroll.scrollTo('projects')">Projects</a></li>
+          <li><a (click)="scroll.scrollTo('experience')">Experience</a></li>
+          <li><a (click)="scroll.scrollTo('contact')">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__social">
+        <h4>Connect</h4>
+        <div class="footer__social-icons">
+          @for (link of data.personalInfo().socialLinks; track link.name) {
+            <a [href]="link.url" target="_blank" [attr.aria-label]="link.name">
+              <i [class]="link.icon"></i>
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; {{ currentYear }} {{ data.personalInfo().name }}. Built with Angular & ❤️</p>
+    </div>
+  </div>
+</footer>
