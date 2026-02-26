@@ -31,9 +31,9 @@ export class DataService {
     yearsOfExperience: 4,
     projectsCompleted: 8,
     socialLinks: [
-      { name: 'GitHub', url: 'https://github.com/yourusername', icon: 'fab fa-github' },
-      { name: 'LinkedIn', url: 'https://linkedin.com/in/yourusername', icon: 'fab fa-linkedin-in' },
-      { name: 'Twitter', url: 'https://twitter.com/yourusername', icon: 'fab fa-x-twitter' }
+      { name: 'GitHub', url: 'https://github.com/shailshikha4997', icon: 'fab fa-github' },
+      { name: 'LinkedIn', url: 'https://www.linkedin.com/in/shailb-9624b11b9/', icon: 'fab fa-linkedin-in' },
+      { name: 'Twitter', url: 'https://twitter.com/Shail04_97', icon: 'fab fa-x-twitter' }
     ],
   });
 
