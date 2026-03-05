@@ -9,7 +9,6 @@
       @for (exp of data.experiences(); track exp.id; let i = $index) {
         <div
           class="experience__item"
-          [class.experience__item--right]="i % 2 !== 0"
           appScrollAnimate
           [animationClass]="i % 2 === 0 ? 'animate-fade-right' : 'animate-fade-left'">
 

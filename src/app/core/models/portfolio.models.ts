@@ -5,7 +5,7 @@ export interface Skill {
   category: SkillCategory;
 }
 
-export type SkillCategory = 'frontend' | 'uiLibrary' | 'devops' | 'tools' | 'database';
+export type SkillCategory = 'frontend' | 'uiLibrary' | 'devops' | 'tools' | 'database' |'performance';
 
 export interface Project {
   id: number;

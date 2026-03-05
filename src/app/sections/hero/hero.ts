@@ -13,9 +13,9 @@ export class Hero  implements OnInit, OnDestroy {
   readonly data = inject(DataService);
   readonly scroll = inject(ScrollService);
   typedText = 'Front-end Developer';
-  private roles = [
-    'Front-end Developer'
-  ];
+  // private roles = [
+  //   'Front-end Developer'
+  // ];
   private roleIndex = 0;
   private charIndex = 0;
   private isDeleting = false;
@@ -30,7 +30,7 @@ export class Hero  implements OnInit, OnDestroy {
   }
 
   private typeEffect(): void {
-    const currentRole = this.roles[this.roleIndex];
+    const currentRole = this.typedText;
     const speed = this.isDeleting ? 40 : 80;
 
     this.typingInterval = setInterval(() => {
@@ -50,7 +50,7 @@ export class Hero  implements OnInit, OnDestroy {
 
         if (this.charIndex === 0) {
           this.isDeleting = false;
-          this.roleIndex = (this.roleIndex + 1) % this.roles.length;
+          this.roleIndex = this.roleIndex;
           clearInterval(this.typingInterval);
           setTimeout(() => this.typeEffect(), 500);
           return;

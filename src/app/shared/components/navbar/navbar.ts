@@ -21,7 +21,7 @@ export class Navbar {
     { label: 'Skills',       id: 'skills' },
     { label: 'Experience',   id: 'experience' },
     { label: 'Projects',     id: 'projects' },
-    { label: 'Testimonials', id: 'testimonials' },
+    // { label: 'Testimonials', id: 'testimonials' },
     { label: 'Contact',      id: 'contact' },
   ];
 

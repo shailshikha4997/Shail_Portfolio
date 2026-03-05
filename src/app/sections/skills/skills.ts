@@ -22,6 +22,7 @@ export class Skills {
     { key: 'uiLibrary',  label: 'UI Library',icon: 'fas fa-swatchbook'},
     { key: 'devops',   label: 'DevOps',    icon: 'fas fa-cloud' },
     { key: 'tools',    label: 'Tools',     icon: 'fas fa-wrench' },
+    { key: 'performance', label: 'Performance',  icon: 'fas fa-tachometer-alt' }
   ];
 
   get filteredSkills() {

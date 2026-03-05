@@ -14,7 +14,7 @@ export class DataService {
   readonly personalInfo = signal<PersonalInfo>({
     name: 'Shailshikha Bhardwaj',
     title: 'Senior Angular Developer',
-    tagline: 'Turning Business Logic into Efficient Angular Applications for 4+ Years.',
+    tagline: "4+ Years of Crafting Angular Applications Now Supercharged with AI. Building Intelligent, Scalable & High-Performance Web Experiences.",
     email: 'shailbhardwaj97@gmail.com',
     phone: '+91 8750467683',
     location: 'Lohiya Nagar, Ghaziabad',
@@ -31,9 +31,9 @@ export class DataService {
     yearsOfExperience: 4,
     projectsCompleted: 8,
     socialLinks: [
-      { name: 'GitHub', url: 'https://github.com/yourusername', icon: 'fab fa-github' },
-      { name: 'LinkedIn', url: 'https://linkedin.com/in/yourusername', icon: 'fab fa-linkedin-in' },
-      { name: 'Twitter', url: 'https://twitter.com/yourusername', icon: 'fab fa-x-twitter' }
+      { name: 'GitHub', url: 'https://github.com/shailshikha4997', icon: 'fab fa-github' },
+      { name: 'LinkedIn', url: 'https://www.linkedin.com/in/shailb-9624b11b9/', icon: 'fab fa-linkedin-in' },
+      { name: 'Twitter', url: 'https://twitter.com/Shail04_97', icon: 'fab fa-x-twitter' }
     ],
   });
 
@@ -62,6 +62,12 @@ export class DataService {
     // Tools
     { name: 'Git', icon: 'fab fa-git-alt', level: 95, category: 'tools' },
     { name: 'Jira', icon: 'fab fa-jira', level: 85, category: 'tools' },
+
+    // Performance
+{ name: 'Core Web Vitals', icon: 'fas fa-gauge-high', level: 95, category: 'performance' },
+{ name: 'Lazy Loading', icon: 'fas fa-cloud-download-alt', level: 85, category: 'performance' },
+{ name: 'Code Splitting', icon: 'fas fa-code-branch', level: 85, category: 'performance' }
+
   ]);
 
   readonly experiences = signal<Experience[]>([
