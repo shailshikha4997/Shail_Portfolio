@@ -32,6 +32,7 @@ export class Contact {
     this.formData = { name: '', email: '', subject: '', message: '' };
 
     setTimeout(() => this.submitted.set(false), 5000);
+    console.log(this.formData,'Form submitted')
   }
 
   contactInfo = [
