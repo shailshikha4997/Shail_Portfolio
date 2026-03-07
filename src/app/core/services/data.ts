@@ -26,7 +26,7 @@ export class DataService {
       TypeScript, SCSS, REST API integration, and modern DevOps practices — 
       enabling me to deliver end-to-end frontend solutions that are built to 
       scale and easy to maintain.`,
-    resumeUrl: 'https://res.cloudinary.com/db8zonq3w/image/upload/v1771508830/downloadfile_agut6q.pdf',
+    resumeUrl: 'https://res.cloudinary.com/db8zonq3w/image/upload/v1772916561/harshibar_s_resume_1_qgdlxc.pdf',
     avatar: 'https://res.cloudinary.com/db8zonq3w/image/upload/v1771508423/IMG-20250121-WA0022_azuish.jpg',
     yearsOfExperience: 4,
     projectsCompleted: 8,
